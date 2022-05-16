@@ -1,0 +1,65 @@
+NOTE: All the commands for the given exercises were run on a WSL (Windows Subsytem for Linux) system and not on an actual Linux machine.
+
+
+a)
+processor: The central processing units (CPUs) available on a machine. Usually, it tells the number of logical cores on the machine.
+cores: The basic computation unit of the CPU - it can run a single program context (or multiple ones if it supports hardware threads such as hyperthreading on Intel CPUs), maintaining the correct program state, registers, and correct execution order, and performing the operations through ALUs.
+(source: https://stackoverflow.com/questions/19225859/difference-between-core-and-processor)
+
+
+b)
+1 CPU socket
+4 cores
+8 processore (2 threads per core)
+(command: lscpu)
+
+
+c)
+Frequency of each processor = 2304.006 MHz
+(command: lscpu or less /proc/cpuinfo)
+
+
+d)
+Total Memory = 8036856 KB = 7848.49 MB = 7.66 GB
+(command: less /proc/meminfo)
+
+
+e)
+MemFree:         7543756 kB
+MemAvailable:    7530568 kB
+MemFree: The amount of physical RAM, in kilobytes, left unused by the system.
+MemAvailable: An estimate of how much memory is available for starting new
+              applications, without swapping. Calculated from MemFree,
+              SReclaimable, the size of the file LRU lists, and the low
+              watermarks in each zone.
+              The estimate takes into account that the system needs some
+              page cache to function well, and that not all reclaimable
+              slab will be reclaimable, due to items being in use. The
+              impact of those factors will vary from system to system.
+
+(command: less /proc/meminfo)
+(source: https://superuser.com/questions/980820/what-is-the-difference-between-memfree-and-memavailable-in-proc-meminfo)
+
+
+f)
+2 user level processes in the system: bash and ps
+(command: ps and top)
+
+
+g)
+2071 forks since the boot in the system
+(command: vmstat -f)
+
+
+h)
+  .nr_switches                   : 74657
+  .nr_switches                   : 32892
+  .nr_switches                   : 130694
+  .nr_switches                   : 53438
+  .nr_switches                   : 106130
+  .nr_switches                   : 32189
+  .nr_switches                   : 53113
+  .nr_switches                   : 47665
+
+Total context switches made since bootup = 5307778
+(command: less /proc/sched_debug | grep nr_switches)
