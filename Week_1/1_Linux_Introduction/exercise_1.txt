@@ -1,0 +1,3 @@
+ls -a
+cp -r <source_dir> <destination_dir>
+mv <old_filename> <new_filename>
