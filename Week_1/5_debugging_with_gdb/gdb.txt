@@ -1,0 +1,77 @@
++r
+Starting program: /home/rahulw/iitb_cserl_bootcamp/application_software/Bootcamp_2022_my_submission/Week_1/debugging_with_gdb/a.out 
+
+Program received signal SIGSEGV, Segmentation fault.
+0x000055555555523e in main ()
++b main 
+Breakpoint 1 at 0x5555555551c9
++l
+1	<built-in>: No such file or directory.
++s
+Single stepping until exit from function main,
+which has no line number information.
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
++info breakpoints 
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00005555555551c9 <main>
++r
+Starting program: /home/rahulw/iitb_cserl_bootcamp/application_software/Bootcamp_2022_my_submission/Week_1/debugging_with_gdb/a.out 
+
+Breakpoint 1, 0x00005555555551c9 in main ()
++l
+1	<built-in>: No such file or directory.
++n
+Single stepping until exit from function main,
+which has no line number information.
+
+Program received signal SIGSEGV, Segmentation fault.
+0x000055555555523e in main ()
++r
+Program not restarted.
++s
+Single stepping until exit from function main,
+which has no line number information.
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
++r
+Starting program: /home/rahulw/iitb_cserl_bootcamp/application_software/Bootcamp_2022_my_submission/Week_1/debugging_with_gdb/a.out 
+
+Breakpoint 1, 0x00005555555551c9 in main ()
++s
+Single stepping until exit from function main,
+which has no line number information.
+
+Program received signal SIGSEGV, Segmentation fault.
+0x000055555555523e in main ()
++q
+Not confirmed.
++n
+Single stepping until exit from function main,
+which has no line number information.
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
++info breakpoints 
+Num     Type           Disp Enb Address            What
+1       breakpoint     keep y   0x00005555555551c9 <main>
+	breakpoint already hit 1 time
++l
+1	<built-in>: No such file or directory.
++l
+1	in <built-in>
++l
+1	in <built-in>
++l
+1	in <built-in>
++s
+The program is not being run.
++l
+1	in <built-in>
++s
+The program is not being run.
++l
+1	in <built-in>
++q
