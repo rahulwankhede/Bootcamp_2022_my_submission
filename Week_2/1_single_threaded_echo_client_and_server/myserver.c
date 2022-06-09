@@ -21,8 +21,6 @@ int main(int argc, char *argv[]){
 
 	char buffer[256];
 
-
-
 	struct sockaddr_in serv_addr, cli_addr;
 	int n;
 	if(argc < 2){
@@ -67,7 +65,8 @@ int main(int argc, char *argv[]){
 		if(n == 1){
 			break;
 		}
-		printf("%s", buffer);
+		//printf("%s", buffer);
+		n = write(newsockfd, buffer, 255);
 	}
 
 	close(newsockfd);

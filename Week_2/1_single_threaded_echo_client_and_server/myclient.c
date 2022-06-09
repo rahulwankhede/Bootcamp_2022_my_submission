@@ -49,7 +49,9 @@ int main(int argc, char *argv[]){
 	struct hostent *server;
 
 
-	char buffer[256]; // to hold message
+	char write_buffer[256]; // to hold message to write
+	char read_buffer[256]; // to hold message received as echo
+
 	if(argc < 3){
 		fprintf(stderr, "usage %s hostname port\n", argv[0]);
 		exit(0);
@@ -88,15 +90,18 @@ int main(int argc, char *argv[]){
 
 	/* My loop part starts here */
 	while(1){
-		bzero(buffer, 256);
-		fgets(buffer, 255, stdin); // (dest, bytes, src)
-		n = write(sockfd, buffer, strlen(buffer));
+		bzero(write_buffer, 256);
+		fgets(write_buffer, 255, stdin); // (dest, bytes, src)
+		n = write(sockfd, write_buffer, strlen(write_buffer));
 		if(n < 0){
 			error("ERROR writing to socket\n");
 		}
 		if(n == 1){
 			break;
 		}
+		bzero(read_buffer, 256);
+		n = read(sockfd, read_buffer, 255);
+		printf("%s", read_buffer);
 	}
 
 	/* close socket */
