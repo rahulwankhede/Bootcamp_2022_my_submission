@@ -34,6 +34,7 @@ void *echo_fn(void * newsockfd_ptr){
 		//printf("%s", buffer);
 		n = write(newsockfd, buffer, 255);
 	}
+	close(newsockfd);
 }
 	
 int main(int argc, char *argv[]){
@@ -85,7 +86,6 @@ int main(int argc, char *argv[]){
 		}
 	}
 
-	close(newsockfd);
 	close(sockfd);
 
 	return 0;
