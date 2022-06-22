@@ -1,4 +1,4 @@
-CC=gcc
+CC=g++
 CLIENT_FILE=myclient.c
 SERVER_FILE=myserver.c
 
