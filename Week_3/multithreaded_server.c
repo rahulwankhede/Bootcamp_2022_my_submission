@@ -118,7 +118,7 @@ HTTP_Response* handle_request(string req)
         */
 		response->content_type = "text/html";
 
-		response->body = "404 Error not found\n";
+		response->body = "404 Error not found";
 
 		response->content_length = response->body.length();
 
@@ -153,7 +153,7 @@ void error(char *msg){
 void *echo_fn(void * newsockfd_ptr){
 	char buffer[256];
 	int n, newsockfd;
-	while(1){
+//	while(1){
 		bzero(buffer, 256);
 		newsockfd = *(int *)newsockfd_ptr;
 		n = read(newsockfd, buffer, 255);
@@ -161,22 +161,28 @@ void *echo_fn(void * newsockfd_ptr){
 			error((char *)"ERROR reading from socket");
 		}
 		//printf("%s", buffer);
+
+//		printf("buffer = %s\n", buffer);
 		
 		string request_str = buffer;
 
-		printf("Here 1\n");
+//		printf("request_str = %s", request_str.c_str());
+
+//		printf("Here 1\n");
 
 		HTTP_Response *my_response = handle_request(request_str);
 
-		printf("Here 2\n");
+//		printf("Here 2\n");
 
 		string output_str = my_response->get_string();
 
 		n = write(newsockfd, output_str.c_str(), 20480);
 
 		delete my_response;
-	}
+//	}
 	close(newsockfd);
+	
+	return NULL;
 }
 	
 int main(int argc, char *argv[]){
