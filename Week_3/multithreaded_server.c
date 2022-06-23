@@ -168,11 +168,11 @@ void *echo_fn(void * newsockfd_ptr){
 
 //		printf("request_str = %s", request_str.c_str());
 
-//		printf("Here 1\n");
+		printf("Here 1\n");
 
 		HTTP_Response *my_response = handle_request(request_str);
 
-//		printf("Here 2\n");
+		printf("Here 2\n");
 
 		string output_str = my_response->get_string();
 
@@ -229,6 +229,7 @@ int main(int argc, char *argv[]){
 			error((char *)"ERROR on accept");
 		}
 		else{
+			printf("Creating thread %d\n", i);
 			pthread_create(&threads[i], NULL, echo_fn, &thread_args[i]);
 		}
 	}
